@@ -144,3 +144,5 @@ dist
 
 bin
 Debug
+*-shm
+*-wal

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Work-3\\Other\\PortalNews\\API\\API.csproj": {}
+    "D:\\Work-3\\Other\\PortalNews\\API\\API.csproj": {}
   },
   "projects": {
-    "d:\\Work-3\\Other\\PortalNews\\API\\API.csproj": {
+    "D:\\Work-3\\Other\\PortalNews\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Work-3\\Other\\PortalNews\\API\\API.csproj",
+        "projectUniqueName": "D:\\Work-3\\Other\\PortalNews\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "d:\\Work-3\\Other\\PortalNews\\API\\API.csproj",
+        "projectPath": "D:\\Work-3\\Other\\PortalNews\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Бобёр\\.nuget\\packages\\",
-        "outputPath": "d:\\Work-3\\Other\\PortalNews\\API\\obj\\",
+        "outputPath": "D:\\Work-3\\Other\\PortalNews\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Бобёр\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -21,6 +21,7 @@
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,6 +43,12 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
