@@ -1,7 +1,10 @@
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using API.Models;
 
 namespace API.Controllers
 {
@@ -25,6 +28,20 @@ namespace API.Controllers
         public async Task<ActionResult<Note>> GetNote(int id)
         {
             return await _context.Notes.FindAsync(id);
+        }
+
+        [HttpPost("add-note")]
+        public async Task<ActionResult<Note>> AddNote(InputNoteModel newNoteInputModel)
+        {
+            try {
+                Note newNoteEntity = new Note(newNoteInputModel);
+                await _context.Notes.AddAsync(newNoteEntity);
+                _context.SaveChanges();
+            } catch (Exception ex) {
+                return BadRequest("Couldn't add entity, check json");
+            }
+
+            return Ok("Added new note");
         }
     }
 }
