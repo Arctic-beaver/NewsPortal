@@ -1,0 +1,10 @@
+<section class="ImputPart"> 
+    <a name="iimputPart"></a>
+    <div class="container" style="margin-top: 200px;">
+      <form #loginForm="ngForm" (ngSubmit)="postNote()" autocomplete="off">
+        <input name="header" [(ngModel)]="model.header" class="form-control form-control-lg" type="text" placeholder="Write your header here" style="margin-top: 20px;">
+        <textarea name="body" [(ngModel)]="model.body" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your post here" style="margin-top: 20px;"></textarea>
+        <button type="submit" class="btn btn-outline-success" style="margin-top: 20px;">Add Post</button>
+      </form>
+    </div>
+  </section>

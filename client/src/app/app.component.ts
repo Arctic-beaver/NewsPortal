@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get('https://localhost:7004/api/notes').subscribe({
+    this.http.get('https://localhost:7036/api/notes').subscribe({
       next: response => this.notes = response,
       error: error => console.log(error),
       complete: () => console.log('Request has completed')

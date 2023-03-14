@@ -1,23 +1,13 @@
 <app-nav></app-nav>
+<app-imput-form></app-imput-form>
 
 <section class="Posts">
   <a name="posts"></a>
   <div class="container" style="margin-top: 100px;">
-    <ul class="list-group list-group-flush list-group-item list-group-item-action flex-column align-items-start active">
-      <li *ngFor="let note of notes" class="list-group-item">
-        {{note.id}} - {{note.userName}}
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section class="Posts">
-  <a name="posts"></a>
-  <div class="container" style="margin-top: 100px;">
-    <div *ngFor="let note of notes" class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div *ngFor="let note of notes" class="list-group-item list-group-item-action flex-column align-items-start active" style="margin-top: 60px;">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{note.header}}</h5>
-        <small>Created on {{note.CreatedOn}} by {{note.userName}} ({{note.UserEmail}})</small>
+        <small>Created on {{note.createdOn}} by {{note.userName}} ({{note.userEmail}})</small>
       </div>
       <p class="mb-1">{{note.body}}</p>
     </div>
