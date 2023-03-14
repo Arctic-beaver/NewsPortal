@@ -13,6 +13,7 @@ import { Note } from '../models/note';
 export class EditNoteComponent implements OnInit {
 
   notes: Note[] = [];
+  model: any = {};
   editingNote: Note = this.GetDefaultNote();
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
@@ -33,6 +34,19 @@ export class EditNoteComponent implements OnInit {
     console.log(this.editingNote);
   }
 
+  async PostNote(){
+    console.log(this.model);
+    this.model.userName = "Alisa";
+    this.model.userEmail = "alisa@yandex.ru";
+    this.http.post(this.baseUrl + 'Notes/note', this.model).subscribe({
+      next: result => {
+        console.log("Finished pushing", result);
+        this.ngOnInit();
+      }
+    });
+    this.model = {};
+  }
+
   UpdateNote(): void {
     console.log(this.editingNote);
     var updateNote : InputNote = {
@@ -43,13 +57,17 @@ export class EditNoteComponent implements OnInit {
     }
 
     this.http.patch(this.baseUrl + `Notes/note/${this.editingNote.id}`, updateNote).subscribe({
-      next: result => console.log("Finished pushing", result)
+      next: result => {
+        console.log("Finished pushing", result);
+        this.ngOnInit();
+      }
     });
-    this.editingNote = this.GetDefaultNote();;
+    this.editingNote = this.GetDefaultNote();
+    this.ngOnInit();
   }
 
   ResetNote(): void {
-    this.editingNote = this.GetDefaultNote();;
+    this.editingNote = this.GetDefaultNote();
   }
 
   private _clone(obj: any){

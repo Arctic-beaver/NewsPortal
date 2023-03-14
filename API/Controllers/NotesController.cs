@@ -5,6 +5,7 @@ using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Models;
+using API.SignalR;
 
 namespace API.Controllers
 {
@@ -37,6 +38,7 @@ namespace API.Controllers
                 Note newNoteEntity = new Note(newNoteInputModel);
                 await _context.Notes.AddAsync(newNoteEntity);
                 _context.SaveChanges();
+                
             } catch (Exception ex) {
                 return BadRequest();
             }
@@ -53,6 +55,7 @@ namespace API.Controllers
                 oldNote.UpdateNote(newNoteInputModel);
                 _context.Notes.Update(oldNote);
                 _context.SaveChanges();
+
             } catch (Exception ex) {
                 return BadRequest();
             }

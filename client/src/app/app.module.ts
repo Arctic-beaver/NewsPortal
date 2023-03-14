@@ -6,14 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
-import { ImputFormComponent } from './imput-form/imput-form.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    ImputFormComponent,
     EditNoteComponent
   ],
   imports: [
