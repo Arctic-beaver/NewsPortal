@@ -1,0 +1,31 @@
+<a name="posts"></a>
+<div class="container" style="margin-top: 100px;">
+  <div *ngFor="let note of notes" class="list-group-item list-group-item-action flex-column align-items-start active" style="margin-top: 60px;">
+    
+    <div *ngIf="editingNote?.id && editingNote?.id == note.id; else elseBlock">Content to render when condition is true.
+
+        <form #loginForm="ngForm" (ngSubmit)="UpdateNote()" autocomplete="off">
+            <input name="header" [(ngModel)]="editingNote.header" class="form-control form-control-lg" type="text" style="margin-top: 20px;">
+            <textarea name="body" [(ngModel)]="editingNote.body" class="form-control" id="exampleFormControlTextarea1" rows="3" style="margin-top: 20px;"></textarea>
+            <div class="d-flex">
+                <button type="submit" class="btn btn-outline-success" style="margin: 20px 10px 10px 10px;">Save changes</button>
+                <button type="button" class="btn btn-outline-success" style="margin: 20px 10px 10px 10px;" (click)="ResetNote()" >Reset</button>
+                <button type="reset" class="btn btn-outline-success" style="margin: 20px 10px 10px 10px;">Clear Fields</button>
+            </div>
+        </form>
+
+    </div>
+    <ng-template #elseBlock>Content to render when condition is false.
+
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{note.header}}</h5>
+            <small>Created on {{note.createdOn}} by {{note.userName}} ({{note.userEmail}})</small>
+        </div>
+        <p class="mb-1">{{note.body}}</p>
+        <button type="button" class="btn btn-outline-success" style="margin-top: 20px;" (click)="Edit(note)">Edit</button>
+
+    </ng-template>
+
+
+  </div>
+</div>
