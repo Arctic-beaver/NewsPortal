@@ -1,4 +1,6 @@
 
+using API.Entities;
+
 namespace API.Models
 {
     [Serializable]

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { InputNote } from '../models/inputNote';
 import { Note } from '../models/note';
 
 
@@ -17,7 +18,7 @@ export class EditNoteComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get(this.baseUrl + 'notes').subscribe({
+    this.http.get(this.baseUrl + 'Notes').subscribe({
       next: response => {
         this.notes = (response as any[]).reverse();
         console.log(response);
@@ -34,9 +35,16 @@ export class EditNoteComponent implements OnInit {
 
   UpdateNote(): void {
     console.log(this.editingNote);
-    // this.http.post(this.baseUrl + 'notes/update-note', this.editingNote).subscribe({
-    //   next: result => console.log("Finished pushing", result)
-    // });
+    var updateNote : InputNote = {
+      header: this.editingNote.header,
+      body: this.editingNote.body,
+      userName: this.editingNote.userName,
+      userEmail: this.editingNote.userEmail,
+    }
+
+    this.http.patch(this.baseUrl + `Notes/note/${this.editingNote.id}`, updateNote).subscribe({
+      next: result => console.log("Finished pushing", result)
+    });
     this.editingNote = this.GetDefaultNote();;
   }
 

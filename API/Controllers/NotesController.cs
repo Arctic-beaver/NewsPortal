@@ -24,18 +24,34 @@ namespace API.Controllers
             return await _context.Notes.ToListAsync();
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Note>> GetNote(int id)
+        [HttpGet("note/{id}")]
+        public async Task<ActionResult<Note>> GetNote(string id)
         {
             return await _context.Notes.FindAsync(id);
         }
 
-        [HttpPost("add-note")]
+        [HttpPost("note")]
         public async Task<ActionResult<Note>> AddNote(InputNoteModel newNoteInputModel)
         {
             try {
                 Note newNoteEntity = new Note(newNoteInputModel);
                 await _context.Notes.AddAsync(newNoteEntity);
+                _context.SaveChanges();
+            } catch (Exception ex) {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
+        [HttpPatch("note/{id}")]
+        public async Task<ActionResult<Note>> UpdateNote(InputNoteModel newNoteInputModel, string id)
+        {
+            try {
+                Note newNoteEntity = new Note(newNoteInputModel);
+                Note oldNote = await _context.Notes.FindAsync(id);
+                oldNote.UpdateNote(newNoteInputModel);
+                _context.Notes.Update(oldNote);
                 _context.SaveChanges();
             } catch (Exception ex) {
                 return BadRequest();

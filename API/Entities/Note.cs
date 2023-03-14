@@ -1,5 +1,6 @@
 
 using API.Models;
+using API.Helpers;
 
 namespace API.Entities
 {
@@ -10,37 +11,24 @@ namespace API.Entities
 
         public string CreatedOn { get; set ; }
 
+        public string? LastUpdatedOn { get; set ; }
+
         public Note(string userName, string userEmail, string header, string body) : base(userName, userEmail, header, body)
         {
-            Id = GenerateId();
-            CreatedOn = getBeautifulDatetime();
+            Id = APIHelper.GenerateId();
+            CreatedOn = APIHelper.getBeautifulDatetime();
         }
 
         public Note(InputNoteModel noteModel) : base (noteModel.UserName, noteModel.UserEmail, noteModel.Header, noteModel.Body)
         {
-            Id = GenerateId();
-            CreatedOn = getBeautifulDatetime();
+            Id = APIHelper.GenerateId();
+            CreatedOn = APIHelper.getBeautifulDatetime();
         }
 
-        private string GenerateId()
-        {
-            const string possible = "ABCDEF1234567890";
-            var text = "";
-            const string pattern = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
-            Random randomizer = new Random();
-            for (int i = 0; i < pattern.Length; i++) {
-                if (pattern[i] == 'X') {
-                    text += possible[randomizer.Next(0, possible.Length)];
-                } else {
-                    text += '-';
-                }
-            }
-            return text;
-        }
-
-        private string getBeautifulDatetime() {
-            DateTime d = DateTime.Now;
-            return $"{d.Hour}:{d.Minute} {d.Day}/{d.Month}/{d.Year}";
+        public void UpdateNote(InputNoteModel inputNote){
+            this.Header = inputNote.Header;
+            this.Body = inputNote.Body;
+            this.LastUpdatedOn = APIHelper.getBeautifulDatetime();
         }
     }
 }

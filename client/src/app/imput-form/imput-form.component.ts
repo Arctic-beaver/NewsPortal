@@ -22,7 +22,7 @@ export class ImputFormComponent implements OnInit {
     console.log(this.model);
     this.model.userName = "Alisa";
     this.model.userEmail = "alisa@yandex.ru";
-    this.http.post(this.baseUrl + 'notes/add-note', this.model).subscribe({
+    this.http.post(this.baseUrl + 'Notes/note', this.model).subscribe({
       next: result => console.log("Finished pushing", result)
     });
     this.model = {};
