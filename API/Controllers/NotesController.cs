@@ -38,10 +38,10 @@ namespace API.Controllers
                 await _context.Notes.AddAsync(newNoteEntity);
                 _context.SaveChanges();
             } catch (Exception ex) {
-                return BadRequest("Couldn't add entity, check json");
+                return BadRequest();
             }
 
-            return Ok("Added new note");
+            return Ok();
         }
     }
 }
