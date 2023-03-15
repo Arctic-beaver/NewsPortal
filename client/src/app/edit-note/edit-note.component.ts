@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { InputNote } from '../models/inputNote';
 import { Note } from '../models/note';
@@ -14,6 +14,7 @@ export class EditNoteComponent implements OnInit {
 
   notes: Note[] = [];
   model: any = {};
+  @Input() user: any;
   editingNote: Note = this.GetDefaultNote();
   baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
@@ -36,8 +37,8 @@ export class EditNoteComponent implements OnInit {
 
   async PostNote(){
     console.log(this.model);
-    this.model.userName = "Alisa";
-    this.model.userEmail = "alisa@yandex.ru";
+    this.model.userName = this.user.name;
+    this.model.userEmail = this.user.email;
     this.http.post(this.baseUrl + 'Notes/note', this.model).subscribe({
       next: result => {
         console.log("Finished pushing", result);

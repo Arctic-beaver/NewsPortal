@@ -1,5 +1,4 @@
 using API.Data;
-using API.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +30,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<NotesHub>("hubs/notes");
 
 app.Run();

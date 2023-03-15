@@ -1,2 +1,5 @@
-<app-nav></app-nav>
-<app-edit-note></app-edit-note>
+<app-nav [user]="user"></app-nav>
+
+<asl-google-signin-button *ngIf="!user" type='icon' size='medium' style="margin-top: 200px;"></asl-google-signin-button>
+
+<app-edit-note *ngIf="user" [user]="user"></app-edit-note>

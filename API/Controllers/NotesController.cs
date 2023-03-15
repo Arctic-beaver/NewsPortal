@@ -1,11 +1,8 @@
-using System.Text.Json;
-using System.Text.Json.Nodes;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Models;
-using API.SignalR;
 
 namespace API.Controllers
 {
